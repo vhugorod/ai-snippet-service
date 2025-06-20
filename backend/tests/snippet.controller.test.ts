@@ -2,7 +2,7 @@ import request from 'supertest';
 import express from 'express';
 import Snippet from '../src/models/snippet.model';
 import * as summarizeService from '../src/services/summarize.service';
-import { createSnippet, getSnippet } from '../src/controllers/snippet.controller';
+import { createSnippet, getSnippet, listSnippets } from '../src/controllers/snippet.controller';
 
 jest.mock('../src/models/snippet.model');
 jest.mock('../src/services/summarize.service');
@@ -11,6 +11,7 @@ const app = express();
 app.use(express.json());
 app.post('/snippets', createSnippet);
 app.get('/snippets/:id', getSnippet);
+app.get('/snippets', listSnippets);
 
 describe('Snippet Controller', () => {
   beforeEach(() => {
@@ -43,5 +44,20 @@ describe('Snippet Controller', () => {
 
     expect(res.status).toBe(404);
     expect(res.body.error).toBe('Not found');
+  });
+
+  it('should return all snippets', async () => {
+    (Snippet.find as jest.Mock).mockResolvedValue([
+      { _id: '1', text: 'a', summary: 'sa' },
+      { _id: '2', text: 'b', summary: 'sb' }
+    ]);
+
+    const res = await request(app).get('/snippets');
+
+    expect(res.status).toBe(200);
+    expect(res.body).toEqual([
+      { _id: '1', text: 'a', summary: 'sa' },
+      { _id: '2', text: 'b', summary: 'sb' }
+    ]);
   });
 });

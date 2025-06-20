@@ -28,3 +28,11 @@ export const getSnippet = async (req: Request, res: Response): Promise<void> => 
   }
 };
 
+export const listSnippets = async (_req: Request, res: Response): Promise<void> => {
+  try {
+    const snippets = await Snippet.find();
+    res.json(snippets);
+  } catch (err) {
+    res.status(500).json({ error: 'Error listing snippets' });
+  }
+};
