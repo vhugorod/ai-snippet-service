@@ -80,3 +80,15 @@ cd backend
 npm install
 npm test
 ```
+
+## Improvements if I Had More Time
+
+- Add endpoint to delete snippets (`DELETE /snippets/:id`)
+- Fully separate frontend into components and custom hooks
+- Improve backend validation with Zod (reusable schemas and middlewares)
+- Apply complete Domain-Driven Design structure (DTOs, Services, Repositories)
+- Authentication & Authorization using JWT
+- Frontend unit and integration tests (React Testing Library + Vitest)
+- Centralized error handling (middleware)
+- API documentation with Swagger
+- Add pagination and search for snippets
