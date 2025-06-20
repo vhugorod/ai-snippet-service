@@ -28,11 +28,6 @@ Thumbs.db
 # Coverage
 coverage/
 
-# Tests
-tests/
-*.test.ts
-*.spec.ts
-
 # Docker
 docker-compose.override.yml
 
