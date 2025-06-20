@@ -14,3 +14,17 @@ export const createSnippet = async (req: Request, res: Response): Promise<void> 
   }
 };
 
+
+export const getSnippet = async (req: Request, res: Response): Promise<void> => {
+  try {
+    const snippet = await Snippet.findById(req.params.id);
+    if (!snippet) {
+  res.status(404).json({ error: 'Not found' });
+  return;
+}
+    res.json(snippet);
+  } catch (err) {
+    res.status(500).json({ error: 'Error fetching snippet' });
+  }
+};
+
