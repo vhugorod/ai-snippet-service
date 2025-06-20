@@ -1,6 +1,6 @@
 import { Request, Response } from 'express';
-import Snippet from '../models/Snippet';
-import { summarizeText } from '../services/summarizeService';
+import Snippet from '../models/snippet.model';
+import { summarizeText } from '../services/summarize.service';
 
 export const createSnippet = async (req: Request, res: Response): Promise<void> => {
   try {

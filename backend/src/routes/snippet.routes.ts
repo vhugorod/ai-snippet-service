@@ -1,7 +1,7 @@
 import express from 'express';
 import {
   createSnippet,
-} from '../controllers/snippetController';
+} from '../controllers/snippet.controller';
 
 const router = express.Router();
 

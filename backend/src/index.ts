@@ -2,7 +2,7 @@ import express from 'express';
 import mongoose from 'mongoose';
 import dotenv from 'dotenv';
 
-import snippetRouter from './routes/snippets';
+import snippetRouter from './routes/snippet.routes';
 
 dotenv.config();
 
