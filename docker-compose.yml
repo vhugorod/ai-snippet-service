@@ -1,0 +1,16 @@
+services:
+  mongo:
+    image: mongo
+    ports:
+      - "27017:27017"
+
+  backend:
+    build:
+      context: ./backend
+    ports:
+      - "3001:3001"
+    environment:
+      - MONGO_URI=mongodb://mongo:27017/snippets
+      - OPENAI_API_KEY=
+    depends_on:
+      - mongo
